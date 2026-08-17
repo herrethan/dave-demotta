@@ -29,7 +29,7 @@ export default function Header() {
           className="font-display text-2xl tracking-wide"
           onClick={() => setOpen(false)}
         >
-          Dave DeMotta
+          David DeMotta
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm md:flex">

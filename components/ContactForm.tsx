@@ -67,7 +67,7 @@ export default function ContactForm() {
       <div className="border border-line bg-surface px-6 py-10 text-center">
         <p className="font-display text-2xl">Thank you.</p>
         <p className="mt-3 text-muted">
-          Your message has been sent. Dave will be in touch soon.
+          Your message has been sent. David will be in touch soon.
         </p>
       </div>
     );

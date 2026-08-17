@@ -20,8 +20,33 @@ export default function AcademicsPage() {
       />
 
       <div className="mx-auto max-w-3xl px-6 pb-20">
-        {/* Dissertation */}
+        {/* Publications & presentations */}
         <section className="border-t border-line pt-10">
+          <p className="text-xs uppercase tracking-[0.2em] text-muted">
+            Publications &amp; Presentations
+          </p>
+          <ul className="mt-6 space-y-6">
+            {publications.map((pub) => (
+              <li key={pub.citation}>
+                <p className="leading-relaxed">{pub.citation}</p>
+                <p className="mt-1 text-sm text-muted">
+                  {pub.kind}
+                  {pub.url && (
+                    <>
+                      {" · "}
+                      <ExternalLink href={pub.url}>
+                        {pub.linkLabel ?? "Read"}
+                      </ExternalLink>
+                    </>
+                  )}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Dissertation */}
+        <section className="mt-16 border-t border-line pt-10">
           <p className="text-xs uppercase tracking-[0.2em] text-muted">
             Dissertation
           </p>
@@ -58,31 +83,6 @@ export default function AcademicsPage() {
               </ExternalLink>
             </div>
           </div>
-        </section>
-
-        {/* Publications & presentations */}
-        <section className="mt-16 border-t border-line pt-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-muted">
-            Publications &amp; Presentations
-          </p>
-          <ul className="mt-6 space-y-6">
-            {publications.map((pub) => (
-              <li key={pub.citation}>
-                <p className="leading-relaxed">{pub.citation}</p>
-                <p className="mt-1 text-sm text-muted">
-                  {pub.kind}
-                  {pub.url && (
-                    <>
-                      {" · "}
-                      <ExternalLink href={pub.url}>
-                        {pub.linkLabel ?? "Read"}
-                      </ExternalLink>
-                    </>
-                  )}
-                </p>
-              </li>
-            ))}
-          </ul>
         </section>
 
         {/* Education */}

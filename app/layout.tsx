@@ -23,8 +23,8 @@ const libertinusSans = Libertinus_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Dave DeMotta",
-    template: "%s | Dave DeMotta",
+    default: "David DeMotta",
+    template: "%s | David DeMotta",
   },
   description:
     "David DeMotta is a jazz pianist, educator, and music scholar based in the New York City area.",
