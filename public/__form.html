@@ -1,0 +1,12 @@
+<!--
+  Static copy of the contact form so Netlify's build-time crawler can detect
+  and register it. Field names must match components/ContactForm.tsx.
+  Never rendered to visitors; the React form POSTs to this path.
+-->
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contact" />
+  <input name="bot-field" />
+  <input name="name" />
+  <input name="email" />
+  <textarea name="message"></textarea>
+</form>
