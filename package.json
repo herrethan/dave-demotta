@@ -2,6 +2,7 @@
   "name": "dave-demotta",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.28.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,21 +10,21 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^16.2.1",
+    "@contentful/rich-text-react-renderer": "^16.2.2",
     "@contentful/rich-text-types": "^17.2.7",
-    "contentful": "^11.12.7",
-    "next": "16.2.10",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "contentful": "^11.12.9",
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
     "eslint": "^9",
-    "eslint-config-next": "16.2.10",
-    "tailwindcss": "^4",
+    "eslint-config-next": "16.3.1",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5"
   },
   "pnpm": {
