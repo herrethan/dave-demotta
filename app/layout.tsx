@@ -14,6 +14,11 @@ const libertinusSans = Libertinus_Sans({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
+  // Humanist / flared sans fallbacks, closest first (macOS, Windows, both, Windows).
+  fallback: ["Optima", "Candara", "Gill Sans", "Segoe UI", "sans-serif"],
+  // Next has no metrics table for this face, so it can't size-adjust a
+  // fallback anyway; say so explicitly instead of warning on every build.
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
