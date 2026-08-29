@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/Button";
 import ExternalLink from "@/components/ExternalLink";
+import RichText from "@/components/RichText";
 import { album } from "@/lib/content";
+import { getHome } from "@/lib/home";
 
 const highlights = [
   {
@@ -22,14 +24,20 @@ const highlights = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const cms = await getHome();
+  const hero = cms?.hero ?? {
+    src: "/hero.jpg",
+    alt: "David DeMotta leaning against a grand piano",
+  };
+
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 pt-6">
         <div className="relative h-[70vh] min-h-[420px] w-full">
           <Image
-            src="/hero.jpg"
-            alt="David DeMotta leaning against a grand piano"
+            src={hero.src}
+            alt={hero.alt}
             fill
             priority
             sizes="(min-width: 1152px) 1104px, 100vw"
@@ -39,16 +47,22 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-        <p className="font-display text-2xl leading-snug sm:text-[1.7rem]">
-          David DeMotta is a jazz pianist, educator, and music scholar based in
-          the New York City area.
-        </p>
-        <p className="mt-6 leading-relaxed text-muted">
-          He maintains an active career as a performer, university instructor,
-          and private teacher, with extensive experience teaching jazz
-          performance, jazz history, music theory, world music, improvisation,
-          and applied piano.
-        </p>
+        {cms?.blurb ? (
+          <RichText document={cms.blurb} className="space-y-6 leading-relaxed text-muted" />
+        ) : (
+          <>
+            <p className="font-display text-2xl leading-snug text-foreground sm:text-[1.7rem]">
+              David DeMotta is a jazz pianist, educator, and music scholar based in
+              the New York City area.
+            </p>
+            <p className="mt-6 leading-relaxed text-muted">
+              He maintains an active career as a performer, university instructor,
+              and private teacher, with extensive experience teaching jazz
+              performance, jazz history, music theory, world music, improvisation,
+              and applied piano.
+            </p>
+          </>
+        )}
       </section>
 
       <section className="border-y border-line bg-surface">

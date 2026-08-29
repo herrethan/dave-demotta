@@ -1,26 +1,18 @@
 import type { Metadata } from "next";
+import Blurb from "@/components/Blurb";
 import PageHeader from "@/components/PageHeader";
-import ScoreList from "@/components/ScoreList";
-import { transcriptionPosts } from "@/lib/content";
+import PostList from "@/components/PostList";
+import { getPage } from "@/lib/pages";
 
 export const metadata: Metadata = { title: "Transcriptions" };
 
-export default function TranscriptionsPage() {
+export default async function TranscriptionsPage() {
+  const page = await getPage("transcriptions");
   return (
     <>
-      <PageHeader
-        title="Transcriptions"
-        lede={
-          <p>
-            Solos transcribed note for note from the recordings — pianists
-            first, but not only. Transcription is the core of how jazz
-            vocabulary is passed on: learn the solo by ear, then use the page
-            to check your hearing and study what the player is doing.
-          </p>
-        }
-      />
+      <PageHeader title={page.title} lede={<Blurb content={page.blurb} />} />
       <div className="mx-auto max-w-3xl px-6 pb-20">
-        <ScoreList posts={transcriptionPosts} />
+        <PostList posts={page.posts} />
       </div>
     </>
   );
