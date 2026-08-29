@@ -34,6 +34,18 @@
   --color-danger: var(--danger);
   --font-sans: var(--font-geist-sans);
   --font-display: var(--font-libertinus);
+  --animate-menu-in: menu-in 180ms ease-out both;
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 body {
