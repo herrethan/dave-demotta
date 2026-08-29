@@ -38,10 +38,8 @@ export type ScoreItem = {
   kind: "score";
   slug: string;
   title: string;
-  /** Direct PDF URL (opened in a new tab). */
+  /** PDF URL, opened in a new tab. */
   pdf: string;
-  /** Same-origin download link when the PDF is remote; otherwise the PDF itself. */
-  download: string;
   thumbnail: Thumb | null;
   blurb: Blurb;
 };
@@ -96,7 +94,6 @@ async function fromPost(
     slug,
     title: entry.fields.title,
     pdf,
-    download: `/download?url=${encodeURIComponent(pdf)}&name=${encodeURIComponent(`${slug}.pdf`)}`,
     thumbnail,
     blurb: entry.fields.blurb ?? null,
   };
@@ -155,7 +152,6 @@ function localScore(p: ScorePost): ScoreItem {
     slug: p.slug,
     title: p.title,
     pdf: p.pdf,
-    download: p.pdf,
     thumbnail: p.thumbnail,
     blurb: p.blurb,
   };

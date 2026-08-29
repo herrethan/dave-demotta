@@ -6,10 +6,8 @@ export type GalleryPhoto = {
   width: number;
   height: number;
   alt: string;
-  /** Link target; defaults to the image itself. */
+  /** Link target (opens in a new tab); defaults to the image itself. */
   href?: string;
-  /** Filename to download as; when set the link downloads instead of opening. */
-  download?: string;
 };
 
 // Nominal row heights; the actual row scales up to fill the container.
@@ -55,13 +53,10 @@ export default function JustifiedGallery({
           >
             <a
               href={photo.href ?? photo.src}
-              download={photo.download}
-              target={photo.download ? undefined : "_blank"}
-              rel={photo.download ? undefined : "noopener noreferrer"}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block transition-opacity hover:opacity-90"
-              aria-label={
-                photo.download ? `Download ${photo.alt}` : `Open ${photo.alt}`
-              }
+              aria-label={`Open ${photo.alt} (opens in a new tab)`}
             >
               <Image
                 src={photo.src}

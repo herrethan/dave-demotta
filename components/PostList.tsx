@@ -100,8 +100,8 @@ function ScorePost({ post }: { post: ScoreItem }) {
       <div className="min-w-0 flex-1">
         <Title slug={post.slug} title={post.title} />
         <Blurb content={post.blurb} className="mt-3 space-y-3 leading-relaxed text-muted" />
-        <ExternalLink href={post.download} className="mt-4 inline-block text-sm">
-          Download PDF
+        <ExternalLink href={post.pdf} className="mt-4 inline-block text-sm">
+          Open PDF
         </ExternalLink>
       </div>
     </article>

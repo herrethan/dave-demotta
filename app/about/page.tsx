@@ -6,7 +6,6 @@ import PageHeader from "@/components/PageHeader";
 import RichText from "@/components/RichText";
 import { getAbout, type AboutContent } from "@/lib/about";
 import { about as local } from "@/lib/content";
-import { downloadHref } from "@/lib/download";
 
 export const metadata: Metadata = { title: "About" };
 
@@ -33,11 +32,8 @@ export default async function AboutPage() {
 // --- Contentful -------------------------------------------------------------
 
 function AboutFromContentful({ content }: { content: AboutContent }) {
-  const pressPhotos = content.pressImages.map((photo, i) => ({
-    ...photo,
-    download: `david-demotta-press-${i + 1}.jpg`,
-    href: downloadHref(photo.src, `david-demotta-press-${i + 1}.jpg`),
-  }));
+  // Press photos open full-size in a new tab (the gallery links to the asset).
+  const pressPhotos = content.pressImages;
 
   return (
     <>
@@ -116,16 +112,10 @@ function AboutLocal() {
 
         <Section label="Press">
           <p className="leading-relaxed text-muted">
-            Photos for press and promotional use. Click an image to download
-            the full-size file.
+            Photos for press and promotional use. Click an image to view it
+            full-size.
           </p>
-          <JustifiedGallery
-            className="mt-6"
-            photos={local.pressPhotos.map((photo, i) => ({
-              ...photo,
-              download: `david-demotta-press-${i + 1}.jpg`,
-            }))}
-          />
+          <JustifiedGallery className="mt-6" photos={local.pressPhotos} />
         </Section>
 
         <Section label="University Teaching">
