@@ -11,7 +11,7 @@ const highlights = [
     body: "Solo, trio, and ensemble settings throughout the New York metropolitan area, rooted in the bebop tradition and contemporary jazz piano.",
   },
   {
-    href: "/transcriptions",
+    href: "/exercises",
     title: "Teaching",
     body: "University instruction and private lessons in improvisation, harmony, ear training, and repertoire — from his home studio in Oradell, New Jersey.",
   },

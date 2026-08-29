@@ -15,10 +15,9 @@ export type VideoPost = {
   blurb: string;
 };
 
-export type TranscriptionPost = {
+export type ScorePost = {
   slug: string;
   title: string;
-  kind: "Transcription" | "Exercise";
   thumbnail: { src: string; width: number; height: number };
   pdf: string;
   blurb: string;
@@ -68,45 +67,81 @@ export const album = {
   ],
 };
 
-export const transcriptionPosts: TranscriptionPost[] = [
-  {
-    slug: "hazeltine-cedar-chord-cycle",
-    title: "Hazeltine Cedar Chord Cycle",
-    kind: "Exercise",
-    thumbnail: {
-      src: "/transcriptions/hazeltine-cedar-chord-cycle.jpg",
-      width: 959,
-      height: 1200,
-    },
-    pdf: "/transcriptions/hazeltine-cedar-chord-cycle.pdf",
-    blurb:
-      "A two-handed voicing exercise handed down from pianist David Hazeltine, built on Cedar Walton's ii–V vocabulary. Two pairs of voicings — m11 to 13(♭9), m9 to 7alt — cycle through every key, first as straight ii–Vs, then approached from a half-step above with major-seventh chords. Play it slowly and let the hands learn the shapes.",
-  },
+export const transcriptionPosts: ScorePost[] = [
   {
     slug: "bouncin-with-bud",
     title: "Bouncin’ with Bud",
-    kind: "Transcription",
-    thumbnail: {
-      src: "/transcriptions/bouncin-with-bud.jpg",
-      width: 927,
-      height: 1200,
-    },
+    thumbnail: { src: "/transcriptions/bouncin-with-bud.jpg", width: 927, height: 1200 },
     pdf: "/transcriptions/bouncin-with-bud.pdf",
     blurb:
       "Bud Powell's solo on the master take of “Bouncin’ with Bud,” from the 1949 Blue Note session. Powell was the subject of DeMotta's doctoral research; this chorus is a compact study in his right-hand phrasing and left-hand punctuation.",
   },
   {
+    slug: "celia",
+    title: "Celia",
+    thumbnail: { src: "/transcriptions/celia.jpg", width: 927, height: 1200 },
+    pdf: "/transcriptions/celia.pdf",
+    blurb:
+      "Bud Powell's solo on his own “Celia,” from the 1949 trio session with Ray Brown and Max Roach — transcribed from the solo break onward, with the left hand's comping written out alongside the line.",
+  },
+  {
     slug: "nardis",
     title: "Nardis",
-    kind: "Transcription",
-    thumbnail: {
-      src: "/transcriptions/nardis.jpg",
-      width: 927,
-      height: 1200,
-    },
+    thumbnail: { src: "/transcriptions/nardis.jpg", width: 927, height: 1200 },
     pdf: "/transcriptions/nardis.pdf",
     blurb:
       "Bill Evans's solo on “Nardis” from Explorations (1961), with Scott LaFaro and Paul Motian — a piece Evans would return to for the rest of his career.",
+  },
+  {
+    slug: "one-finger-snap",
+    title: "One Finger Snap",
+    thumbnail: { src: "/transcriptions/one-finger-snap.jpg", width: 927, height: 1200 },
+    pdf: "/transcriptions/one-finger-snap.pdf",
+    blurb:
+      "Herbie Hancock's solo on “One Finger Snap,” from Empyrean Isles (1964) with Freddie Hubbard, Ron Carter, and Tony Williams. Both hands transcribed — Hancock's voicings under the line are as instructive as the line itself.",
+  },
+  {
+    slug: "cool-struttin",
+    title: "Cool Struttin’",
+    thumbnail: { src: "/transcriptions/cool-struttin.jpg", width: 927, height: 1200 },
+    pdf: "/transcriptions/cool-struttin.pdf",
+    blurb:
+      "Sonny Clark's solo on the title track of Cool Struttin’ (Blue Note, 1958). A single-line transcription of one of the great hard-bop blues solos — relaxed, bluesy, and rhythmically exact.",
+  },
+  {
+    slug: "opus-de-funk",
+    title: "Opus de Funk",
+    thumbnail: { src: "/transcriptions/opus-de-funk.jpg", width: 927, height: 1200 },
+    pdf: "/transcriptions/opus-de-funk.pdf",
+    blurb:
+      "Horace Silver's three-chorus solo on “Opus de Funk,” from his 1953 Blue Note trio recording — an early statement of the funky, blues-rooted style that would define hard bop.",
+  },
+  {
+    slug: "eternal-triangle",
+    title: "The Eternal Triangle",
+    thumbnail: { src: "/transcriptions/eternal-triangle.jpg", width: 927, height: 1200 },
+    pdf: "/transcriptions/eternal-triangle.pdf",
+    blurb:
+      "Sonny Rollins's and Sonny Stitt's tenor solos on Stitt's “The Eternal Triangle,” from Dizzy Gillespie's Sonny Side Up (1957). Two contrasting approaches to rhythm changes, back to back — worth studying on any instrument.",
+  },
+];
+
+export const exercisePosts: ScorePost[] = [
+  {
+    slug: "hazeltine-cedar-chord-cycle",
+    title: "Hazeltine Cedar Chord Cycle",
+    thumbnail: { src: "/exercises/hazeltine-cedar-chord-cycle.jpg", width: 959, height: 1200 },
+    pdf: "/exercises/hazeltine-cedar-chord-cycle.pdf",
+    blurb:
+      "A two-handed voicing exercise handed down from pianist David Hazeltine, built on Cedar Walton's ii–V vocabulary. Two pairs of voicings — m11 to 13(♭9), m9 to 7alt — cycle through every key, first as straight ii–Vs, then approached from a half-step above with major-seventh chords. Play it slowly and let the hands learn the shapes.",
+  },
+  {
+    slug: "line-over-it-could-happen-to-you",
+    title: "Line over “It Could Happen to You”",
+    thumbnail: { src: "/exercises/line-over-it-could-happen-to-you.jpg", width: 927, height: 1200 },
+    pdf: "/exercises/line-over-it-could-happen-to-you.pdf",
+    blurb:
+      "An original written line over the changes to “It Could Happen to You,” in E♭ — a full chorus of bebop vocabulary through the tune's ii–Vs and turnarounds, closing with voiced chords. Learn it by ear and by hand, then let it feed your own improvising.",
   },
 ];
 
