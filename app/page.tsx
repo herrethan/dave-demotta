@@ -2,27 +2,36 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/Button";
 import ExternalLink from "@/components/ExternalLink";
+import Blurb from "@/components/Blurb";
 import RichText from "@/components/RichText";
 import { album } from "@/lib/content";
 import { getHome } from "@/lib/home";
 
+// Card titles and links are fixed; the body text comes from the `home`
+// entry's performance / teaching / scholarship fields (local copy as fallback).
 const highlights = [
   {
+    key: "performance",
     href: "/about",
     title: "Performance",
-    body: "Solo, trio, and ensemble settings throughout the New York metropolitan area, rooted in the bebop tradition and contemporary jazz piano.",
+    fallback:
+      "Solo, trio, and ensemble settings throughout the New York metropolitan area, rooted in the bebop tradition and contemporary jazz piano.",
   },
   {
+    key: "teaching",
     href: "/exercises",
     title: "Teaching",
-    body: "University instruction and private lessons in improvisation, harmony, ear training, and repertoire — from his home studio in Oradell, New Jersey.",
+    fallback:
+      "University instruction and private lessons in improvisation, harmony, ear training, and repertoire — from his home studio in Oradell, New Jersey.",
   },
   {
+    key: "scholarship",
     href: "/academics",
     title: "Scholarship",
-    body: "Ph.D. in Ethnomusicology from the CUNY Graduate Center, with published research on Bud Powell and the aesthetics of bebop rhythm.",
+    fallback:
+      "Ph.D. in Ethnomusicology from the CUNY Graduate Center, with published research on Bud Powell and the aesthetics of bebop rhythm.",
   },
-];
+] as const;
 
 export default async function Home() {
   const cms = await getHome();
@@ -110,9 +119,10 @@ export default async function Home() {
           {highlights.map((item) => (
             <div key={item.title}>
               <h3 className="font-display text-xl">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">
-                {item.body}
-              </p>
+              <Blurb
+                content={cms?.highlights[item.key] ?? item.fallback}
+                className="mt-3 space-y-3 text-sm leading-relaxed text-muted"
+              />
               <Link
                 href={item.href}
                 className="mt-4 inline-block text-sm text-accent transition-colors hover:text-foreground"

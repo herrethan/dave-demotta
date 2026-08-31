@@ -38,6 +38,9 @@ export type HomeSkeleton = {
   fields: {
     heroImage?: EntryFieldTypes.AssetLink;
     blurb?: EntryFieldTypes.RichText;
+    performance?: EntryFieldTypes.RichText;
+    teaching?: EntryFieldTypes.RichText;
+    scholarship?: EntryFieldTypes.RichText;
   };
 };
 
