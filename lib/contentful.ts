@@ -38,9 +38,25 @@ export type HomeSkeleton = {
   fields: {
     heroImage?: EntryFieldTypes.AssetLink;
     blurb?: EntryFieldTypes.RichText;
+    featuredAlbums?: EntryFieldTypes.Array<
+      EntryFieldTypes.EntryLink<AlbumSkeleton>
+    >;
     performance?: EntryFieldTypes.RichText;
     teaching?: EntryFieldTypes.RichText;
     scholarship?: EntryFieldTypes.RichText;
+  };
+};
+
+export type AlbumSkeleton = {
+  contentTypeId: "album";
+  fields: {
+    title?: EntryFieldTypes.Symbol;
+    personnel?: EntryFieldTypes.Symbol;
+    cover?: EntryFieldTypes.AssetLink;
+    description?: EntryFieldTypes.RichText;
+    spotifyLink?: EntryFieldTypes.Symbol;
+    appleMusicLink?: EntryFieldTypes.Symbol;
+    listenLink?: EntryFieldTypes.Symbol;
   };
 };
 

@@ -4,7 +4,7 @@ import { ButtonLink } from "@/components/Button";
 import ExternalLink from "@/components/ExternalLink";
 import Blurb from "@/components/Blurb";
 import RichText from "@/components/RichText";
-import { album } from "@/lib/content";
+import { album as localAlbum } from "@/lib/content";
 import { getHome } from "@/lib/home";
 
 // Card titles and links are fixed; the body text comes from the `home`
@@ -33,8 +33,21 @@ const highlights = [
   },
 ] as const;
 
+// Local stand-in for the Contentful `album` entry (description may be a plain
+// string here; Blurb renders either).
+const albumFallback = {
+  title: localAlbum.title,
+  personnel: localAlbum.personnel as string | null,
+  cover: { ...localAlbum.cover, alt: `${localAlbum.title} album cover` },
+  description:
+    "A program of standards and original compositions shaped by a contemporary approach to the jazz tradition.",
+  href: localAlbum.href,
+  streaming: localAlbum.streaming,
+};
+
 export default async function Home() {
   const cms = await getHome();
+  const albums = cms?.albums.length ? cms.albums : [albumFallback];
   const hero = cms?.hero ?? {
     src: "/hero.jpg",
     alt: "David DeMotta leaning against a grand piano",
@@ -77,40 +90,48 @@ export default async function Home() {
       <section className="border-y border-line bg-surface">
         <div className="mx-auto max-w-3xl px-6 py-16 text-center sm:py-20">
           <p className="text-xs uppercase tracking-[0.2em] text-muted">
-            Recent album
+            {albums.length > 1 ? "Recent albums" : "Latest album"}
           </p>
-          <h2 className="mt-4 font-display text-4xl italic sm:text-5xl">
-            {album.title}
-          </h2>
-          <p className="mt-4 text-muted">{album.personnel}</p>
-          <Link
-            href={album.href}
-            className="mx-auto mt-8 block w-full max-w-sm transition-opacity hover:opacity-90"
-            aria-label={`Listen to ${album.title}`}
-          >
-            <Image
-              src={album.cover.src}
-              alt={`${album.title} album cover`}
-              width={album.cover.width}
-              height={album.cover.height}
-              sizes="(min-width: 640px) 384px, 100vw"
-              className="h-auto w-full"
-            />
-          </Link>
-          <p className="mt-4 flex justify-center gap-6 text-sm">
-            {album.streaming.map((service) => (
-              <ExternalLink key={service.url} href={service.url}>
-                {service.label}
-              </ExternalLink>
-            ))}
-          </p>
-          <p className="mx-auto mt-8 max-w-xl leading-relaxed">
-            A program of standards and original compositions shaped by a
-            contemporary approach to the jazz tradition.
-          </p>
-          <ButtonLink href={album.href} className="mt-8">
-            Listen
-          </ButtonLink>
+          {albums.map((album, i) => (
+            <div key={album.title} className={i > 0 ? "mt-16 border-t border-line pt-12" : ""}>
+              <h2 className="mt-4 font-display text-4xl italic sm:text-5xl">
+                {album.title}
+              </h2>
+              {album.personnel && <p className="mt-4 text-muted">{album.personnel}</p>}
+              {album.cover && (
+                <Link
+                  href={album.href}
+                  className="mx-auto mt-8 block w-full max-w-sm transition-opacity hover:opacity-90"
+                  aria-label={`Listen to ${album.title}`}
+                >
+                  <Image
+                    src={album.cover.src}
+                    alt={`${album.title} album cover`}
+                    width={album.cover.width}
+                    height={album.cover.height}
+                    sizes="(min-width: 640px) 384px, 100vw"
+                    className="h-auto w-full"
+                  />
+                </Link>
+              )}
+              {album.streaming.length > 0 && (
+                <p className="mt-4 flex justify-center gap-6 text-sm">
+                  {album.streaming.map((service) => (
+                    <ExternalLink key={service.url} href={service.url}>
+                      {service.label}
+                    </ExternalLink>
+                  ))}
+                </p>
+              )}
+              <Blurb
+                content={album.description}
+                className="mx-auto mt-8 max-w-xl space-y-4 leading-relaxed"
+              />
+              <ButtonLink href={album.href} className="mt-8">
+                Listen
+              </ButtonLink>
+            </div>
+          ))}
         </div>
       </section>
 
